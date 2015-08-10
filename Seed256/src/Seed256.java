@@ -679,10 +679,12 @@ public class Seed256 {
 
 		byte[] temp = new byte[TEXT_SIZE];
 		byte[] temp2 = new byte[TEXT_SIZE];
+		
+		int loop = 0;
 		if (hash.length <= TEXT_SIZE) {
 			SeedDecrypt (hash, pdwRoundKey, result);
 		} else {
-			int loop = (int) Math.ceil ((double) hash.length / TEXT_SIZE);
+			loop = (int) Math.ceil ((double) hash.length / TEXT_SIZE);
 			for (int i = 0; i < loop; i++) {
 				for (int j = 0; j < TEXT_SIZE; j++) {
 					temp2[j] = hash[(i * TEXT_SIZE) + j];
@@ -694,8 +696,8 @@ public class Seed256 {
 			}
 
 		}
-
-		result = AnsiX923Padding.removePadding (result, TEXT_SIZE);
+		if(loop == 0) loop = 1;
+		result = AnsiX923Padding.removePadding (result, TEXT_SIZE * loop);
 		return new String (result, 0, result.length);
 	}
 
