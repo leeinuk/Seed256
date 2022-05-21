@@ -557,7 +557,7 @@ public class Seed256 {
 		}
 
 		T0 = ((((int) A[0] + (int) C[0]) ^ (int) E[0]) - (int) F[0]) ^ (int) KC[0];
-		T1 = ((((int) B[0] - (int) D[0]) ^ (int) G[0]) - (int) H[0]) ^ (int) KC[0];
+		T1 = ((((int) B[0] - (int) D[0]) ^ (int) G[0]) + (int) H[0]) ^ (int) KC[0];
 
 		pdwRoundKey[0] = SS0[GetB0 ((int) T0)] ^ SS1[GetB1 ((int) T0)] ^ SS2[GetB2 ((int) T0)] ^ SS3[GetB3 ((int) T0)];
 		pdwRoundKey[1] = SS0[GetB0 ((int) T1)] ^ SS1[GetB1 ((int) T1)] ^ SS2[GetB2 ((int) T1)] ^ SS3[GetB3 ((int) T1)];
